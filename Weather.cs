@@ -10,10 +10,26 @@ namespace LemonadeStand_3DayStarter
     {
         string condition;
         int temperature;
-        List<string> 
+        public List<string> listOfConditions = new List<string>();
         public Weather()
         {
+            listOfConditions.Add("Sunny");
+            listOfConditions.Add("Cloudy");
+            listOfConditions.Add("Rainy");
+            listOfConditions.Add("Snowy");
+        }
 
+        public void RandomTemp()
+        {
+            Random rnd = new Random();
+            temperature = rnd.Next(15, 91);
+        }
+
+        public void RandomWeather()
+        {
+            Random rnd = new Random();
+            condition = listOfConditions[rnd.Next(4)];
         }
     }
 }
+
