@@ -8,8 +8,8 @@ namespace LemonadeStand_3DayStarter
 {
     class Weather
     {
-        string condition;
-        int temperature;
+        public string condition;
+        public int temperature;
         public List<string> listOfConditions = new List<string>();
         public Weather()
         {

@@ -8,5 +8,12 @@ namespace LemonadeStand_3DayStarter
 {
     class Game
     {
+        public Player player;
+        public List<Day> days;
+        public int currentDay; 
+        public Game()
+        {
+
+        }
     }
 }
