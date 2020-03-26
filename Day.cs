@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace LemonadeStand_3DayStarter
 {
-    class Day
+    public class Day
     {
         public Weather weather;
         public List<Customer> customers;
         public Store store;
         public int days;
         public Pitcher pitcher;
+        public Inventory inventory;
         Random rnd = new Random();
         public Day()
         {
@@ -21,7 +22,7 @@ namespace LemonadeStand_3DayStarter
         public void NumOfDays()
         {
             Console.WriteLine("How many days would you like to go for? 7 days, 14 days, or 30 days.");
-            days = int.Parse(Console.ReadLine());
+            days = 7;
         }
         public void WillingToBuy()
         {
@@ -29,7 +30,7 @@ namespace LemonadeStand_3DayStarter
             {
                 weather.RandomTemp();
                 weather.RandomWeather();
-                if ((weather.temperature <= rnd.Next(65, 85) && weather.temperature >= 90) && (store.pricePerCup <= rnd.NextDouble() && store.pricePerCup >= (rnd.NextDouble() * (rnd.Next(1, 3) - 1 + 1)))) 
+                if ((weather.temperature <= rnd.Next(65, 85) && weather.temperature >= 90) && (store.pricePerCup <= rnd.NextDouble() && store.pricePerCup >= (rnd.NextDouble() * (rnd.Next(1, 3) - 1 + 1))))
                 {
                     pitcher.DecreasePitcher();
                 }
@@ -37,10 +38,17 @@ namespace LemonadeStand_3DayStarter
                 {
                     Console.WriteLine("Didn't buy!");
                 }
-                if(pitcher.cupsLeftInPitcher == 0)
-                {
-                    pitcher.ResetPitcher();
-                }
+
+                // move to seperate method
+                    if (inventory.lemons.Count() >= 0 || inventory.iceCubes.Count() >= 0 || inventory.sugarCubes.Count() >= 0 || inventory.cups.Count() >= 0)
+                    {
+                        Console.WriteLine("You are sold out!");
+                        break;
+                    }
+                    else
+                    {
+                        pitcher.ResetPitcher();
+                    }
             }
 
         }

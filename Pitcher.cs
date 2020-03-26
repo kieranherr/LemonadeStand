@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace LemonadeStand_3DayStarter
 {
-    class Pitcher
+    public  class Pitcher
     {
         public int cupsLeftInPitcher;
-        public Inventory inventory = new Inventory();
+
         public Pitcher()
         {
             cupsLeftInPitcher = 12;
+         
 
         }
          public void DecreasePitcher()
         {
             cupsLeftInPitcher--;
-            if(le)
         }
         public void ResetPitcher()
         {

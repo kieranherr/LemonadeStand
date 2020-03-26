@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LemonadeStand_3DayStarter
 {
-    abstract class Item
+    public abstract class Item
     {
         // member variables (HAS A)
         public string name;
@@ -18,5 +18,7 @@ namespace LemonadeStand_3DayStarter
         }
 
         // member methods (CAN DO)
+
+        // dont add anything to the ingredient objects or item class
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LemonadeStand_3DayStarter
 {
-    class Player
+   public class Player
     {
         // member variables (HAS A)
         public Inventory inventory;
