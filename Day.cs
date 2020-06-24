@@ -21,8 +21,23 @@ namespace LemonadeStand_3DayStarter
         }
         public void NumOfDays()
         {
-            Console.WriteLine("How many days would you like to go for? 7 days, 14 days, or 30 days.");
-            days = 7;
+            Console.WriteLine("How many days would you like to go for? 1. 7 days, 2. 14 days, or 3. 30 days.");
+            int ans = Convert.ToInt32(Console.ReadLine());
+            switch (ans)
+            {
+                case 1:
+                    days = 7;
+                    break;
+                case 2:
+                    days = 14;
+                    break;
+                case 3:
+                    days = 30;
+                    break;
+                default:
+                    break;
+
+            }
         }
         public void WillingToBuy()
         {
