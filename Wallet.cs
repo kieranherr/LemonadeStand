@@ -22,7 +22,7 @@ namespace LemonadeStand_3DayStarter
         {
             money = 20.00;
         }
-
+          
         public void PayMoneyForItems(double transactionAmount)
         {
             money -= transactionAmount;

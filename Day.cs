@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -41,7 +42,7 @@ namespace LemonadeStand_3DayStarter
         }
         public void WillingToBuy()
         {
-            for(int i = 0; i<30; i++)
+            for (int i = 0; i < 30; i++)
             {
                 weather.RandomTemp();
                 weather.RandomWeather();
@@ -53,19 +54,19 @@ namespace LemonadeStand_3DayStarter
                 {
                     Console.WriteLine("Didn't buy!");
                 }
+            }
+        }
+                
+               public void OutOfLemonade()
+            {
+                if (pitcher.cupsLeftInPitcher == 0)
+                {
+                    Console.WriteLine("You are sold out!");
 
-                // move to seperate method
-                    if (inventory.lemons.Count() >= 0 || inventory.iceCubes.Count() >= 0 || inventory.sugarCubes.Count() >= 0 || inventory.cups.Count() >= 0)
-                    {
-                        Console.WriteLine("You are sold out!");
-                        break;
-                    }
-                    else
-                    {
-                        pitcher.ResetPitcher();
-                    }
+                }
+                    pitcher.ResetPitcher();
+                    
+                } 
             }
 
         }
-    }
-}

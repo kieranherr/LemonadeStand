@@ -29,7 +29,7 @@ namespace LemonadeStand_3DayStarter
         {
             Random rnd = new Random();
             condition = listOfConditions[rnd.Next(4)];
-        }
+        } 
     }
 }
 

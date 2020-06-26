@@ -34,8 +34,8 @@ namespace LemonadeStand_3DayStarter
                 player.inventory.AddLemonsToInventory(lemonsToPurchase);
             }
         }
-
-        public void SellSugarCubes(Player player)
+                                                                                                  
+        public void SellSugarCubes(Player player)   
         {
             int sugarToPurchase = UserInterface.GetNumberOfItems("sugar");
             double transactionAmount = CalculateTransactionAmount(sugarToPurchase, pricePerSugarCube);
