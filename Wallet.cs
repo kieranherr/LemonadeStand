@@ -27,5 +27,10 @@ namespace LemonadeStand_3DayStarter
         {
             money -= transactionAmount;
         }
+
+        public double ReturnMoney()
+        {
+            return money;
+        }
     }
 }
