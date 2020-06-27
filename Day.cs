@@ -36,6 +36,9 @@ namespace LemonadeStand_3DayStarter
                     days = 30;
                     break;
                 default:
+                    Console.WriteLine("Please choose a valid option");
+                    Console.ReadLine();
+                        
                     break;
 
             }
