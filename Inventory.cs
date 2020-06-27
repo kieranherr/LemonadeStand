@@ -31,6 +31,7 @@ namespace LemonadeStand_3DayStarter
                 Lemon lemon = new Lemon();
                 lemons.Add(lemon);
             }
+            Console.WriteLine(lemons.Count);
         }
 
         public void AddSugarCubesToInventory(int numberOfSugarCubes)

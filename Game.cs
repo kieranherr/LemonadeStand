@@ -33,11 +33,15 @@ namespace LemonadeStand_3DayStarter
             while(i != 1)
             {
                 money = wallet.ReturnMoney();
+                int lemons = inventory.lemons.Count;
+                int iceCubes = inventory.iceCubes.Count;
+                int sugarCubes = inventory.sugarCubes.Count;
+                int cups = inventory.cups.Count;
                 Console.WriteLine("You have " + money + " dollars");
-                Console.WriteLine("You have " + inventory.lemons.Count + " Lemons. Press 1 if you would like to buy more");
-                Console.WriteLine("You have " + inventory.iceCubes.Count + " Ice Cubes. Press 2 if you would like to buy more");
-                Console.WriteLine("You have " + inventory.sugarCubes.Count + " Sugar Cubes. Press 3 if you would like to buy more");
-                Console.WriteLine("You have " + inventory.cups.Count + " Cups. Press 4 if you would like to buy more");
+                Console.WriteLine("You have " + lemons + " Lemons. Press 1 if you would like to buy more");
+                Console.WriteLine("You have " + iceCubes + " Ice Cubes. Press 2 if you would like to buy more");
+                Console.WriteLine("You have " + sugarCubes + " Sugar Cubes. Press 3 if you would like to buy more");
+                Console.WriteLine("You have " + cups + " Cups. Press 4 if you would like to buy more");
                 int choice = Int32.Parse(Console.ReadLine());
                 switch (choice)
                 {
