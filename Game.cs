@@ -25,23 +25,17 @@ namespace LemonadeStand_3DayStarter
 
         public void StorePage()
         {
-            Wallet wallet = new Wallet();
-            Inventory inventory = new Inventory();
             Store store = new Store();
-            double money = wallet.ReturnMoney();
+            double money = player.wallet.ReturnMoney();
             int i = 0;
             while(i != 1)
             {
-                money = wallet.ReturnMoney();
-                int lemons = inventory.lemons.Count;
-                int iceCubes = inventory.iceCubes.Count;
-                int sugarCubes = inventory.sugarCubes.Count;
-                int cups = inventory.cups.Count;
+                money = player.wallet.ReturnMoney(); 
                 Console.WriteLine("You have " + money + " dollars");
-                Console.WriteLine("You have " + lemons + " Lemons. Press 1 if you would like to buy more");
-                Console.WriteLine("You have " + iceCubes + " Ice Cubes. Press 2 if you would like to buy more");
-                Console.WriteLine("You have " + sugarCubes + " Sugar Cubes. Press 3 if you would like to buy more");
-                Console.WriteLine("You have " + cups + " Cups. Press 4 if you would like to buy more");
+                Console.WriteLine("You have " + player.inventory.lemons.Count + " Lemons. Press 1 if you would like to buy more");
+                Console.WriteLine("You have " + player.inventory.iceCubes.Count + " Ice Cubes. Press 2 if you would like to buy more");
+                Console.WriteLine("You have " + player.inventory.sugarCubes.Count + " Sugar Cubes. Press 3 if you would like to buy more");
+                Console.WriteLine("You have " + player.inventory.cups.Count + " Cups. Press 4 if you would like to buy more");
                 int choice = Int32.Parse(Console.ReadLine());
                 switch (choice)
                 {
@@ -62,7 +56,8 @@ namespace LemonadeStand_3DayStarter
                         break;
 
                 }
-                Console.ReadLine();
+                Console.WriteLine("Type 1 to exit the store. Type 0 to stay in the store.");
+                    i = Convert.ToInt32(Console.ReadLine());
             }
         }
     }

@@ -26,7 +26,7 @@ namespace LemonadeStand_3DayStarter
         public void PayMoneyForItems(double transactionAmount)
         {
             money -= transactionAmount;
-            Console.WriteLine(money);
+            
         }
 
         public double ReturnMoney()
