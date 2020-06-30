@@ -38,38 +38,39 @@ namespace LemonadeStand_3DayStarter
                 default:
                     Console.WriteLine("Please choose a valid option");
                     Console.ReadLine();
-                        
+
                     break;
 
             }
         }
-        public void WillingToBuy()
-        {
-            for (int i = 0; i < 30; i++)
-            {
-                weather.RandomTemp();
-                weather.RandomWeather();
-                if ((weather.temperature <= rnd.Next(65, 85) && weather.temperature >= 90) && (store.pricePerCup <= rnd.NextDouble() && store.pricePerCup >= (rnd.NextDouble() * (rnd.Next(1, 3) - 1 + 1))))
-                {
-                    pitcher.DecreasePitcher();
-                }
-                else if (weather.condition == "Snowy" || weather.condition == "Rainy")
-                {
-                    Console.WriteLine("Didn't buy!");
-                }
-            }
-        }
-                
-               public void OutOfLemonade()
-            {
-                if (pitcher.cupsLeftInPitcher == 0)
-                {
-                    Console.WriteLine("You are sold out!");
+        //public void WillingToBuy()
+        //{
+        //    for (int i = 0; i < 30; i++)
+        //    {
+        //        weather.RandomTemp();
+        //        weather.RandomWeather();
+        //        if ((weather.temperature <= rnd.Next(65, 85) && weather.temperature >= 90) && (store.pricePerCup <= rnd.NextDouble() && store.pricePerCup >= (rnd.NextDouble() * (rnd.Next(1, 3) - 1 + 1))))
+        //        {
+        //            pitcher.DecreasePitcher();
+        //        }
+        //        else if (weather.condition == "Snowy" || weather.condition == "Rainy")
+        //        {
+        //            Console.WriteLine("Didn't buy!");
+        //        }
+        //        OutOfLemonade();
+        //    }
+        //}
 
-                }
-                    pitcher.ResetPitcher();
-                    
-                } 
-            }
+        //       public void OutOfLemonade()
+        //    {
+        //        if (pitcher.cupsLeftInPitcher == 0)
+        //        {
+        //            Console.WriteLine("You are sold out!");
 
-        }
+        //        }
+        //            pitcher.ResetPitcher();
+
+        //        } 
+          }
+
+    }
