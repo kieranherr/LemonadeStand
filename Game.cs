@@ -9,13 +9,14 @@ namespace LemonadeStand_3DayStarter
 {
     public class Game
     {
-        public Player player = new Player();
+        public Player player;
         public List<Day> days;
-        public Weather weather = new Weather();
-        public int currentDay; 
+        public Weather weather;
+        public int currentDay;
+        public int cupsSold = 0;
         public Game()
         {
-
+            player = new Player();
         }
         public void RunGame()
         {
@@ -23,7 +24,7 @@ namespace LemonadeStand_3DayStarter
             day.NumOfDays();
             StorePage();
             priceAndRecipe();
-            
+            WillingToBuy();
 
 
         }
@@ -116,39 +117,68 @@ namespace LemonadeStand_3DayStarter
         }
         public void WillingToBuy()
         {
+            Weather weather = new Weather();
             Random rnd = new Random();
+            cupsSold = 0;
+#pragma warning disable CS0162 // Unreachable code detected
             for (int i = 0; i < 30; i++)
+#pragma warning restore CS0162 // Unreachable code detected
             {
                 weather.RandomTemp();
                 weather.RandomWeather();
-                if ((weather.temperature <= rnd.Next(65, 85) && weather.temperature >= 90) && (player.recipe.pricePerCup <= rnd.NextDouble() && player.recipe.pricePerCup >= (rnd.NextDouble() * (rnd.Next(1, 3) - 1 + 1))))
-                {
-                    player.pitcher.DecreasePitcher();
-                    player.inventory.cups.RemoveAt(0);
-                }
-                else if (weather.condition == "Snowy" || weather.condition == "Rainy")
-                {
-                    Console.WriteLine("Didn't buy!");
-                }
-                OutOfLemonade();
+               
+                
+                    if ((weather.temperature <= rnd.Next(65, 85) || weather.temperature >= 90) || (player.recipe.pricePerCup <= rnd.NextDouble() && player.recipe.pricePerCup >= (rnd.NextDouble() * (rnd.Next(1, 3) - 1 + 1))))
+                    {
+                        player.pitcher.DecreasePitcher();
+                        player.inventory.cups.RemoveAt(0);
+                        SellLemonade();
+                        cupsSold++;
+                    }
+                    else //if (weather.condition == "Snowy" || weather.condition == "Rainy")
+                    {
+                        Console.WriteLine("Didn't buy!");
+                    }
+                
+                //if (OutOfLemonade() == true)
+                //{
+                    break;
+                //}
             }
+            EndOfDay();
         }
 
-        public void OutOfLemonade()
+        public bool OutOfLemonade()
         {
-            if (player.pitcher.cupsLeftInPitcher == 0)
-            {
-                Console.WriteLine("You are sold out!");
-                player.pitcher.ResetPitcher();
-                subtractRecipe();
-            }
             
-           
-            Console.WriteLine(player.inventory.lemons.Count);
-            Console.WriteLine(player.inventory.sugarCubes.Count);
-            Console.WriteLine(player.inventory.sugarCubes.Count);
+                
+                        if (player.inventory.cups.Count != 0 || player.inventory.lemons.Count <= player.recipe.amountOfLemons && player.inventory.iceCubes.Count <= player.recipe.amountOfIceCubes && player.inventory.sugarCubes.Count <= player.recipe.amountOfSugarCubes || player.pitcher.cupsLeftInPitcher == 0)
+                        {
+                            player.pitcher.ResetPitcher();
+                            subtractRecipe();
 
+                        }
+
+                        else
+                        {
+                            Console.WriteLine("You are sold out!");
+                            Console.WriteLine(player.inventory.lemons.Count);
+                            Console.WriteLine(player.inventory.sugarCubes.Count);
+                            Console.WriteLine(player.inventory.sugarCubes.Count);
+                            Console.ReadLine();
+                return true;
+                            
+
+                        }
+            return false;
         }
+                
+
+
+        
+
+        
+        // SOLID Principles Open-Closed Principle
         public void subtractRecipe()
         {
             int lem = player.recipe.amountOfLemons;
@@ -156,16 +186,50 @@ namespace LemonadeStand_3DayStarter
             int sugar = player.recipe.amountOfSugarCubes;
             for(int i = 0; i<lem; i++)
             {
-                player.inventory.lemons.RemoveAt(0);
+                if (player.inventory.lemons.Count == 0)
+                {
+                    break;
+                }
+                else
+                {
+                    player.inventory.lemons.RemoveAt(0);
+                }
             }
             for(int i = 0; i<ice; i++)
             {
-                player.inventory.iceCubes.RemoveAt(0);
+                if (player.inventory.iceCubes.Count == 0)
+                {
+                    break;
+                }
+                else
+                {
+                    player.inventory.iceCubes.RemoveAt(0);
+                }
             }
             for(int i = 0; i<sugar; i++)
             {
-                player.inventory.sugarCubes.RemoveAt(0);
+                if (player.inventory.sugarCubes.Count == 0)
+                {
+                    break;
+                }
+                else
+                {
+                    player.inventory.sugarCubes.RemoveAt(0);
+                }
             }
+
+        }
+
+        // SOLID Principle Single Responsibility
+        public void SellLemonade()
+        {
+            player.wallet.PayMoneyForItems(player.recipe.pricePerCup);
+        }
+        public void EndOfDay()
+        {
+            Console.WriteLine("You sold " + cupsSold + " cups today!");
+            Console.WriteLine("Press enter to go to the start of the next day!");
+            Console.ReadLine();
 
         }
     }
